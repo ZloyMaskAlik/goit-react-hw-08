@@ -16,7 +16,7 @@ export default function Header() {
                 <img src={reactLogo} className={styles.react} alt="React logo" />
                 <img src={earth} className={styles.earth} alt="Earth logo" />
             </div>
-            <p className={styles.item}>HOMEWORK <span>REACT</span> TASK 3</p>
+            <p className={styles.item}>HOMEWORK <span>REACT</span> TASK 6</p>
             </div>
         
         </div>
