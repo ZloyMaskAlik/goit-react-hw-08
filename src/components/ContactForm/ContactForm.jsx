@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, selectContacts } from '../redux/contactsSlice';
+import { addContact, selectContacts } from '../../redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';

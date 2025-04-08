@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectContacts } from './redux/contactsSlice';
+import { selectContacts } from '../redux/contactsSlice';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

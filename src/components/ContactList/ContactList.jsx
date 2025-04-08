@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, selectContacts } from '../redux/contactsSlice';
+import { deleteContact, selectContacts } from '../../redux/contactsSlice';
 
 import Contact from '../Contact/Contact';
 
 import css from './ContactList.module.css';
-import { selectNameFilter } from '../redux/filtersSlice';
+import { selectNameFilter } from '../../redux/filtersSlice';
 
 export default function ContactLis () {
   const contacts = useSelector(selectContacts);
