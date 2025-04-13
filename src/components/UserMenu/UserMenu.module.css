@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.btn {
+    border-radius: 8px;
+    border: none;
+    padding: 12px 32px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #7940b9;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}

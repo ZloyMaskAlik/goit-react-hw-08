@@ -1,50 +1,67 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectFilteredContacts,
-  selectError,
-  selectIsLoading,
-} from '../redux/contactsSlice';
+import { Routes, Route } from 'react-router-dom';
+import { refreshUser } from '../redux/auth/operations';
+import { selectIsRefreshing } from '../redux/auth/selectors';
+import { lazy, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Header from './Header/Header';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import SearchBox from './SearchBox/SearchBox';
+import Layout from '../components/Layout/Layout';
+import Loader from '../components/Loader/Loader';
+import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import RestrictedRoute from '../components/RestrictedRoute/RestrictedRoute';
 
-import { useEffect } from 'react';
-import { fetchContacts } from '../redux/contactsOps';
-import Loader from './Loader/Loader';
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const RegistrationPage = lazy(() =>
+  import('../pages/RegistrationPage/RegistrationPage')
+);
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
-
-export default function App() {
+export default function App () {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const contacts = useSelector(selectFilteredContacts);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
     <>
-      <div>
-        <Header />
-        <h1>Phonebook</h1>
-        <ContactForm />
-        {isLoading && !error && <Loader />}
-        {!isLoading && !error && contacts?.length === 0 ? (
-          <p>You don&apos;t have any contacts yet.</p>
-        ) : (
-          <>
-            <SearchBox />
-            <ContactList />
-          </>
-        )}
-      </div>
+      {isRefreshing ? (
+        <Loader />
+      ) : (
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<RegistrationPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<LoginPage />}
+                />
+              }
+            />
+            <Route
+              path="/contacts"
+              element={<PrivateRoute component={<ContactsPage />} />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
+      )}
       <ToastContainer />
     </>
   );
 };
-

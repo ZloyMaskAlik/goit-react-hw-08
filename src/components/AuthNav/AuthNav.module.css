@@ -1,0 +1,31 @@
+.authNavContainer {
+    display: flex;
+    gap: 24px;
+}
+
+.link {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+    text-decoration: none;
+    color: #444343;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.link:hover,
+link:focus {
+    color: #120d13;
+}
+
+.active {
+    color: rgb(142, 90, 227);
+}
+
+.active:hover,
+.active:focus {
+    color: rgb(132, 85, 209);
+}
