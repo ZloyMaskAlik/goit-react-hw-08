@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, selectContacts } from '../../redux/contactsSlice';
-import { nanoid } from '@reduxjs/toolkit';
+import { selectFilteredContacts } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsOps';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
@@ -13,19 +13,17 @@ const userSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required'),
   
-    phone: Yup.string()
+    number: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
 });
 
-const initialValues = { username: '', phone: '' };
+const initialValues = { username: '', number: '' };
 
 export default function ContactsForm () {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const nameFieldId = nanoid();
-  const phoneFieldId = nanoid();
+ const dispatch = useDispatch();
+  const contacts = useSelector(selectFilteredContacts);
 
   const handleSubmit = (values, action) => {
     const isDuplicate = contacts.some(
@@ -39,9 +37,8 @@ export default function ContactsForm () {
     }
 
     const newContact = {
-      id: nanoid(),
       name: values.username,
-      number: values.phone,
+      number: values.number,
     };
     dispatch(addContact(newContact));
     action.resetForm();
@@ -54,14 +51,14 @@ export default function ContactsForm () {
         validationSchema={userSchema}
       >
         <Form className={css.form}>
-          <label className={css.label} htmlFor={nameFieldId}>
+          <label className={css.label} htmlFor="username">
             Name
           </label>
           <Field
             className={css.input}
             type="text"
             name="username"
-            id={nameFieldId}
+            id="username"
           />
           <ErrorMessage
             className={css.error}
@@ -70,17 +67,12 @@ export default function ContactsForm () {
           />
           <label
             className={`${css.label} ${css.labelWithSpace}`}
-            htmlFor={phoneFieldId}
+            htmlFor="number"
           >
             Number
           </label>
-          <Field
-            className={css.input}
-            type="text"
-            name="phone"
-            id={phoneFieldId}
-          />
-          <ErrorMessage className={css.errorPhone} name="phone" component="span" />
+          <Field className={css.input} type="text" name="number" id="number" />
+          <ErrorMessage className={css.errorNumber} name="number" component="span" />
           <button className={css.btn} type="submit">
             Add contact
           </button>
@@ -89,4 +81,3 @@ export default function ContactsForm () {
     </div>
   );
 };
-

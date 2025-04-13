@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contactsOps';
 
 import css from './Contact.module.css';
+
 
 export default function Contact({ id, name, number }){
   const dispatsch = useDispatch();
@@ -21,7 +22,7 @@ export default function Contact({ id, name, number }){
             {name}
           </p>
           <p>
-            <span className={css.span} role="img" aria-label="Phone Number">
+            <span className={css.span} role="img" aria-label=" Number">
             ☎️
             </span>
             {number}
