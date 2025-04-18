@@ -6,6 +6,7 @@ import { lazy, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Header from '../components/Header/Header';
 import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
@@ -29,11 +30,13 @@ export default function App () {
 
   return (
     <>
+      <Header/> 
       {isRefreshing ? (
         <Loader />
       ) : (
-        <Layout>
-          <Routes>
+          
+          <Layout>
+           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
               path="/register"

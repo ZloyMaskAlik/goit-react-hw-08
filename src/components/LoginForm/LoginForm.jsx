@@ -8,14 +8,12 @@ import { login } from '../../redux/auth/operations';
 
 import css from './LoginForm.module.css';
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Please enter a valid email')
     .required('Email is required field!'),
   password: Yup.string()
-    .matches(passwordRules, 'Please create a stronger password!')
     .required('Password is required field!'),
 });
 
@@ -70,7 +68,7 @@ export default function LoginForm () {
           name="password"
           id={passwordFieldId}
         />
-        <ErrorMessage className={css.error} name="password" component="span" />
+        <ErrorMessage className={css.errorPass} name="password" component="span" />
         <button className={css.loginBtn} type="submit">
           Log In
         </button>

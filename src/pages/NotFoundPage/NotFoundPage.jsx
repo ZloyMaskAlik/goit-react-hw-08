@@ -1,4 +1,4 @@
-import notFoundImg from '../../assets/image/404.jpg';
+import notFoundImg from '../../assets/404_error.svg';
 
 import css from './NotFoundPage.module.css';
 

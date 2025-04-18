@@ -1,6 +1,12 @@
-.header {
+.appBar {
+    width: 100%;
+    padding: 0px 50px;
+    position: sticky;
+    top: 4rem;
+    z-index: 10;
     background-color: #ffffff;
-    border-bottom: 2px solid #9e55eb;
+    border-radius: 8px;
+    border: 2px solid #000000;
 }
 
 .nav {
@@ -8,5 +14,4 @@
     gap: 24px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 72px;
-}
+  }

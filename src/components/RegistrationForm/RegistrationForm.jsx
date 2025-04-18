@@ -8,8 +8,6 @@ import { register } from '../../redux/auth/operations';
 
 import css from './RegistrationForm.module.css';
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
-
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'Name is too Short!')
@@ -19,8 +17,7 @@ const RegistrationSchema = Yup.object().shape({
     .email('Please enter a valid email')
     .required('Email is required field!'),
   password: Yup.string()
-    .matches(passwordRules, 'Please create a stronger password!')
-    .required('Password is required field!'),
+      .required('Password is required field!'),
 });
 
 const initialValues = { name: '', email: '', password: '' };
@@ -76,7 +73,7 @@ export default function RegistrationForm () {
           name="email"
           id={emailFieldId}
         />
-        <ErrorMessage className={css.error} name="email" component="span" />
+        <ErrorMessage className={css.errorMail} name="email" component="span" />
         <label
           className={`${css.registrationLabel} ${css.registrationLabelWithSpace}`}
           htmlFor={passwordFieldId}
@@ -89,7 +86,7 @@ export default function RegistrationForm () {
           name="password"
           id={passwordFieldId}
         />
-        <ErrorMessage className={css.error} name="password" component="span" />
+        <ErrorMessage className={css.errorPass} name="password" component="span" />
         <button className={css.registrationBtn} type="submit">
           Register
         </button>

@@ -2,17 +2,23 @@
     display: flex;
     gap: 16px;
     align-items: center;
+    font-weight: 700;
+    font-size: 28px;
 }
 
 .btn {
     border-radius: 8px;
     border: none;
-    padding: 12px 32px;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #7940b9;
+    padding: 12px 18px;
+    font-size: 24px;
+    background-color: #FF6B0A;
+    box-shadow: 10px 10px 14px #00000059;
     color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.25s;
+    transition: 250ms ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(0.95);
+    box-shadow: none;
 }

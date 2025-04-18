@@ -1,26 +1,37 @@
+.home {
+    width: 50px;
+}
+
 .link {
     display: flex;
     gap: 4px;
     justify-content: center;
     align-items: center;
-    padding: 24px 0;
+    padding: 18px 0;
     text-decoration: none;
-    color: #444343;
+    color: #000000;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.5;
 }
 
+
 .link:hover,
-link:focus {
-    color: #120d13;
+.link:focus {
+    color: #FF6B0A;
 }
 
 .active {
-    color: rgb(142, 90, 227);
+    text-shadow: #ff6c0a5c 10px 10px 5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF6B0A;
 }
 
 .active:hover,
 .active:focus {
-    color: rgb(132, 85, 209);
+    text-shadow: #ff6c0a5c 10px 10px 5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF6B0A;
 }

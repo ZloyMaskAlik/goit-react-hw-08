@@ -1,5 +1,5 @@
 .item {
-    width: calc(99%/2);
+    width: calc(90%/2);
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,6 +1,6 @@
 .form {
     position: relative;
-    width: 30%;
+    width: 40%;
     margin: 24px auto;
     display: flex;
     flex-direction: column;
@@ -16,16 +16,15 @@
 }
 
 .input {
+    box-sizing: border-box;
     width: 100%;
     margin-bottom: 16px;
-    padding: 8px;
+    padding: 8px 8px;
     font-size: 24px;
     border: 1px solid #000000;
     border-radius: 4px;
-    padding: 8px;
     outline: #FF6B0A;
-    
-}
+   }
 
 .input:focus {
     border-color: #FF6B0A;
@@ -34,7 +33,7 @@
 .error {
     position: absolute;
     top: 18%;
-    left: 37%;
+    left: 39%;
     z-index: 1;
     padding: 2px 4px;
     margin: 0 auto;
@@ -48,7 +47,7 @@
 .errorNumber {
     position: absolute;
     top: 52%;
-    left: 36%;
+    left: 39%;
     z-index: 1;
     padding: 2px 4px;
     margin: 0 auto;

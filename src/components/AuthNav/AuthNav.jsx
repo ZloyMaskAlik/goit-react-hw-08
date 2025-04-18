@@ -3,11 +3,11 @@ import clsx from 'clsx';
 
 import css from './AuthNav.module.css';
 
-export default function buildLinkClass({ isActive }){
+const buildLinkClass =({ isActive })=>{
   return clsx(css.link, isActive && css.active);
 };
 
-const AuthNav = () => {
+export default function AuthNav () {
   return (
     <div className={css.authNavContainer}>
       <NavLink className={buildLinkClass} to="/register">

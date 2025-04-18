@@ -1,6 +1,7 @@
 .list {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     flex-direction: row;
     gap: 12px;
 }

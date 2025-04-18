@@ -15,7 +15,6 @@ const formSchema = Yup.object().shape({
     .required('Required'),
 
   number: Yup.string()
-    .matches(/^\d+$/, 'Phone number must contain only digits')
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
@@ -55,7 +54,7 @@ export default function ContactsForm () {
     action.resetForm();
   };
   return (
-    <div>
+    <>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -73,7 +72,7 @@ export default function ContactsForm () {
           />
           <ErrorMessage className={css.error} name="name" component="span" />
           <label
-            className={`${css.label} ${css.labelWithSpace}`}
+            className={css.label}
             htmlFor={numberFieldId}
           >
             Number
@@ -90,6 +89,6 @@ export default function ContactsForm () {
           </button>
         </Form>
       </Formik>
-    </div>
+    </>
   );
 };
